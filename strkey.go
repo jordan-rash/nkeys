@@ -260,7 +260,8 @@ func IsValidPublicOperatorKey(src string) bool {
 func checkValidPrefixByte(prefix PrefixByte) error {
 	switch prefix {
 	case PrefixByteOperator, PrefixByteServer, PrefixByteCluster,
-		PrefixByteAccount, PrefixByteUser, PrefixByteSeed, PrefixBytePrivate:
+		PrefixByteAccount, PrefixByteUser, PrefixByteSeed, PrefixBytePrivate,
+		PrefixByteModule, PrefixByteService:
 		return nil
 	}
 	return ErrInvalidPrefixByte
@@ -270,7 +271,8 @@ func checkValidPrefixByte(prefix PrefixByte) error {
 // is not one of the public defined valid prefix byte constants.
 func checkValidPublicPrefixByte(prefix PrefixByte) error {
 	switch prefix {
-	case PrefixByteServer, PrefixByteCluster, PrefixByteOperator, PrefixByteAccount, PrefixByteUser:
+	case PrefixByteServer, PrefixByteCluster, PrefixByteOperator, PrefixByteAccount,
+		PrefixByteUser, PrefixByteModule, PrefixByteService:
 		return nil
 	}
 	return ErrInvalidPrefixByte
@@ -290,6 +292,10 @@ func (p PrefixByte) String() string {
 		return "user"
 	case PrefixByteSeed:
 		return "seed"
+	case PrefixByteService:
+		return "service"
+	case PrefixByteModule:
+		return "module"
 	case PrefixBytePrivate:
 		return "private"
 	}
