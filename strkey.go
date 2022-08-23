@@ -17,6 +17,7 @@ import (
 	"bytes"
 	"encoding/base32"
 	"encoding/binary"
+
 	"golang.org/x/crypto/ed25519"
 )
 
@@ -44,6 +45,12 @@ const (
 
 	// PrefixByteUser is the version byte used for encoded NATS Users
 	PrefixByteUser PrefixByte = 20 << 3 // Base32-encodes to 'U...'
+
+	// PrefixByteModule is the version byte used for encoded wasmCloud Modules
+	PrefixByteModule PrefixByte = 12 << 3 // Base32-encodes to 'M...'
+
+	// PrefixByteService is the version byte used for encoded wasmCloud Services
+	PrefixByteService PrefixByte = 21 << 3 // Base32-encodes to 'V...'
 
 	// PrefixByteUnknown is for unknown prefixes.
 	PrefixByteUnknown PrefixByte = 23 << 3 // Base32-encodes to 'X...'
